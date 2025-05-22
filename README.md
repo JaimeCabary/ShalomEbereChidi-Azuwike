@@ -1,6 +1,6 @@
 # Shalom Chidi-Azuwike's Portfolio
 
-Welcome to my personal portfolio! I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at the Federal University of Technology, Owerri (FUTO), with a CGPA of 4.86. This portfolio showcases my journey in tech, highlighting my projects, skills, and experiences in AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I’m passionate about innovation and empowering others through technology.
+Welcome to my personal portfolio! I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at the Federal University of Technology, Owerri (FUTO). This portfolio showcases my journey in tech, highlighting my projects, skills, and experiences in AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I’m passionate about innovation and empowering others through technology.
 
 ---
 
