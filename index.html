@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shalom Chidi-Azuwike | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #ff4500; /* orangered */
+            --secondary-color: #bb86fc;
+            --accent-color: #03dac6;
+            --dark-bg: #121212;
+            --darker-bg: #1f1b24;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            background: linear-gradient(to right, var(--darker-bg), var(--dark-bg));
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            position: relative;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--darker-bg);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 0.75rem 1rem;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--primary-color);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease forwards;
+            margin-bottom: 4rem;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.8s; }
+        section:nth-child(5) { animation-delay: 1.0s; }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347);
+            transition: width 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            width: 100px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: radial-gradient(circle at top right, rgba(255, 69, 0, 0.2), transparent);
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 69, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 69, 0, 0); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
+        }
+
+        /* Journey Section */
+        .journey-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 1.5rem;
+            color: var(--text-color);
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .tab-button:hover, .tab-button.active {
+            color: var(--primary-color);
+        }
+
+        .tab-button.active::after {
+            width: 100%;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347, #ff8c00);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-org {
+            font-style: italic;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-desc {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Modal for Expanded Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--dark-bg);
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            padding: 2rem;
+            position: relative;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 2rem;
+        }
+
+        .education-date {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347);
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .footer-text {
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                padding-top: 1rem;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .projects-grid, .skills-container, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">Shalom Chidi-Azuwike</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#journey">Journey</a>
+                <!-- <div class="dropdown"> -->
+                <a href="#gallery">Gallery</a>
+                <!-- class="dropbtn">Gallery <i class="fas fa-chevron-down"> -->
+                <!-- <div class="dropdown-content">
+                    <a href="#work-gallery">Work Experience</a>
+                    <a href="#project-gallery">Projects</a>
+                </div> -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <img src="cabondo.png" alt="Shalom Chidi-Azuwike" class="profile-photo">
+            <h1>Hello, I'm <span>Shalom</span></h1>
+            <p>Hi, I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at the Federal University of Technology Owerri, Nigeria. I'm passionate about AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I advocate for digital skills and innovation. My love for reading, sparked at age four, led me to author books like <i>The Billionaire's Son</i> and <i>Caught in Between</i> under the pseudonym Jaime Cabary. I've developed websites like KeedCeeJaye, Phantomzcollectionx.vercel.app, and my portfolio, plus apps like Bizvest, ScriptureDash, and a GPS app. My projects include Janessa AI, MarsoVerse, and a Weather app. Inspired by Elon Musk, I aim to create robotic art and contribute to humanity's multiplanetary future.</p>
+            <a href="#journey" class="cta-button">Explore My Journey</a>
+        </section>
+
+        <section id="journey">
+            <h2 class="section-title">My Journey</h2>
+            
+            <div class="journey-tabs">
+                <button class="tab-button active" data-tab="skills"><strong>Skills</strong> </button>
+                <button class="tab-button" data-tab="experience"><strong> Experience</strong> </button>
+                <button class="tab-button" data-tab="education"><strong> Education</strong> </button>
+                <button class="tab-button" data-tab="projects"><strong> Projects</strong> </button>
+            </div>
+            
+            <div id="skills-tab" class="tab-content active">
+                <h3>Coding Skills</h3>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Python <i class="fab fa-python"></i></span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML <i class="fab fa-html5"></i></span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>CSS <i class="fab fa-css3-alt"></i></span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript <i class="fab fa-js"></i></span>
+                            <span>34%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 34%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Professional Skills</h3>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Content Writing <i class="fas fa-pen"></i></span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Graphics <i class="fas fa-paint-brush"></i></span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>AI & Data Science <i class="fas fa-brain"></i></span>
+                            <span>67%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 67%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Web Development <i class="fas fa-code"></i></span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Blockchain/Web3 <i class="fas fa-link"></i></span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="experience-tab" class="tab-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 - Present</div>
+                        <h3 class="timeline-title">CEO</h3>
+                        <div class="timeline-org">Kabary Software</div>
+                        <p>Led development of innovative software solutions, including websites and apps like Bizvest and Janessa AI.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3 class="timeline-title">Microsoft Learn Student Ambassador</h3>
+                        <div class="timeline-org">Microsoft</div>
+                        <p>Advocating for digital skills and empowering students with tech education. Organizing workshops on AI and cloud computing.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Nov 2024 - Present</div>
+                        <h3 class="timeline-title">Student Brand Ambassador</h3>
+                        <div class="timeline-org">Samsung Mobile</div>
+                        <p>Promoting Samsung’s mobile technologies in a hybrid capacity.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Feb 2025 - May 2025</div>
+                        <h3 class="timeline-title">Secretary</h3>
+                        <div class="timeline-org">IEEE FUTO Student Branch SIGHT Group</div>
+                        <p>Organized events and promoted humanitarian technology initiatives in a hybrid role.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mar 2025 - May 2025</div>
+                        <h3 class="timeline-title">Field Intern – Renewable Energy & Construction</h3>
+                        <div class="timeline-org">Eauxwell Nigeria Limited</div>
+                        <p>Contributed to renewable energy projects at STEM Plot 5, FUTO, focusing on sustainable solutions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="education-tab" class="tab-content">
+                <div class="education-item">
+                    <div class="education-date">2021 - Present</div>
+                    <h3 class="education-degree">Bachelor of Engineering in Software Engineering</h3>
+                    <div class="education-school">Federal University of Technology, Owerri (FUTO)</div>
+                    <p>Current CGPA: 4.86/5.0. Focused on coding and empowering women in tech.</p>
+                    <p>Coursework: Data Structures, Machine Learning, Web Technologies</p>
+                </div>
+                <!-- <":[]},{"text":"Secondary Education","className":"education-degree"},{"text":"Federal Government Girls' College, Owerri","className":"education-school"},{"text":"Commonwealth Club member, representing New Zealand.","className":null}]}]'> -->
+                    <div class="education-item">
+                        <div class="education-date">2015 - 2021</div>
+                        <h3 class="education-degree">Secondary Education</h3>
+                        <div class="education-school">Federal Government Girls' College, Owerri</div>
+                        <p>Commonwealth Club member, representing New Zealand.</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-date">Feb 2020</div>
+                    <h3 class="education-degree">Get Connected</h3>
+                    <div class="education-school">Cisco Networking Academy</div>
+                    <p>Introduction to digital literacy and networking basics.</p>
+                </div>
+                <div class="education-item">
+                    <div class="education-date">Mar 2024</div>
+                    <h3 class="education-degree">Introduction to Programming Using Python</h3>
+                    <div class="education-school">Cisco Networking Academy</div>
+                    <p>Foundational programming skills in Python.</p>
+                </div>
+                <div class="education-item">
+                    <div class="education-date">May 2024</div>
+                    <h3 class="education-degree">DSEP Web Development Course</h3>
+                    <div class="education-school">CSAAE</div>
+                    <p>Training in modern web development techniques.</p>
+                </div>
+            </div>
+            
+            <div id="projects-tab" class="tab-content">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Janessa AI <i class="fas fa-brain"></i></h3>
+                            <p class="project-desc">An AI project enhancing user interactions through natural language processing, creating personalized conversational experiences.</p>
+                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">MarsoVerse <i class="fas fa-rocket"></i></h3>
+                            <p class="project-desc">A game inspired by interplanetary exploration, blending immersive storytelling with interactive gameplay.</p>
+                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">ScriptureDash <i class="fas fa-book"></i></h3>
+                            <p class="project-desc">A Bible app designed like Duolingo, gamifying scripture learning with interactive challenges.</p>
+                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Phantomzcollectionx app <i class="fas fa-mobile-alt"></i></h3>
+                            <p class="project-desc">A mobile app empowering small businesses with tools for managing, budgeting and tracking.</p>
+                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Weather App <i class="fas fa-cloud"></i></h3>
+                            <p class="project-desc">A user-friendly app providing real-time weather updates with a sleek interface.</p>
+                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">GPS App <i class="fas fa-map-marker-alt"></i></h3>
+                            <p class="project-desc">A navigation app offering precise location tracking and route planning.</p>
+                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">KeedCeeJaye <i class="fas fa-globe"></i></h3>
+                            <p class="project-desc">A dynamic website showcasing creative content and tech innovations.</p>
+                            <a href="https://keedceejaye.com" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Phantomzcollectionx <i class="fas fa-store"></i></h3>
+                            <p class="project-desc">An e-commerce platform built on Vercel, featuring a modern shopping experience.</p>
+                            <a href="https://phantomzcollectionx.vercel.app" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Sasha’s Sashaydes <i class="fas fa-blog"></i></h3>
+                            <p class="project-desc">A personal blog sharing my journey in tech, renewable energy, and creative writing.</p>
+                            <a href="https://sashassahaydes.blogspot.com" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">Renewable Energy Garden <i class="fas fa-leaf"></i></h3>
+                            <p class="project-desc">A sustainable energy project with Eauxwell Nigeria at FUTO, using IoT and data analytics.</p>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title">Gallery</h2>
+            <div id="work-gallery">
+                <h3>Work Experience</h3>
+                <br>
+                <br>
+                <div class="gallery-grid">
+                    <div class="gallery-card" data-modal="modal1">
+                        <img src="cabondo.png" alt="Kabary Software" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Kabary Software</h3>
+                            <p>Leading software development since 2019.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal2">
+                        <img src="mlsa.png" alt="Microsoft" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Microsoft</h3>
+                            <p>Empowering students as an ambassador.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal3">
+                        <img src="Samsung.png" alt="Samsung" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Samsung</h3>
+                            <p>Promoting mobile technologies.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal4">
+                        <img src="ieee.png" alt="IEEE FUTO" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">IEEE FUTO</h3>
+                            <p>Organizing tech events.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal5">
+                        <img src="eauxwell.png" alt="Eauxwell Nigeria" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Eauxwell Nigeria</h3>
+                            <p>Renewable energy innovations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div id="project-gallery">
+                <h3>Projects</h3>
+                <br>
+                <br>
+                <div class="gallery-grid">
+                    <div class="gallery-card" data-modal="modal6">
+                        <img src="janessa.png" alt="Janessa AI" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Janessa AI</h3>
+                            <p>AI-driven conversational agent.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal7">
+                        <img src="mars1.png" alt="MarsoVerse" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">MarsoVerse</h3>
+                            <p>Interplanetary game adventure.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal8">
+                        <img src="scdas.png" alt="ScriptureDash" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">ScriptureDash</h3>
+                            <p>Gamified Bible learning app.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <img src="phan.png" alt="Phantomzcollectionx Website " class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Phantomzcollectionx Website</h3>
+                            <p>Sales tools for businesses.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <img src="PhantomzCompanyEmployees.png" alt="Phantomzcollectionx App " class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Phantomzcollectionx App</h3>
+                            <p>Recording tools for businesses.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <img src="gps.png" alt="MaryAnn GPS App " class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Maryann GPS App</h3>
+                            <p>Smooth GPS Tracker</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <img src="nganet.png" alt="Nigeria Net Website Website " class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Nigeria Net</h3>
+                            <p>My first responsive website</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <img src="keedceejaye.png" alt="KeedCeeJaye Website " class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">KeedCeeJaye</h3>
+                            <p> My little brother's portfolio.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal10">
+                        <img src="franweather.png" alt="Weather App" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Weather App</h3>
+                            <p>Real-time weather updates.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal10">
+                        <img src="oldport.png" alt="Shalom's Old Portfolio" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Shalom's Old Portfolio</h3>
+                            <p>Old Portfolio</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal10">
+                        <img src="fake caution screen.png" alt="Fake Caution Screen" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Fake Caution Screen</h3>
+                            <p>Fake Caution Screen to ward off intruders.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <img src="shalom porto.png" alt="My new Portfolio" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Shalom Chidi-Azuwike</h3>
+                            <p>My Current Portfolio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals for Expanded Galleries -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Kabary Software Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="keedceejaye.png" alt="Project 1" class="modal-image">
+                    <img src="janessa.png" alt="Project 2" class="modal-image">
+                    <img src="marso.png" alt="Project 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Microsoft Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="mlsa.png" alt="Event 1" class="modal-image">
+                    <img src="ieee.png" alt="Event 2" class="modal-image">
+                    <img src="phan.png" alt="Event 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <!-- Add more modals as needed -->
+    </main>
+
+    <footer>
+        <div class="social-links"> 
+            <a href="https://linkedin.com/in/shalom-chidi-azuwike-752b47321" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:shazzyazuwike@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/JaimeCabary" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://medium.com/@shazzyazuwike" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
+            <a href="https://linktr.ee/shalomazuwike" aria-label="Linktree"><i class="fas fa-link"></i></a>
+        </div>
+        <p class="footer-text">© 2025 Shalom Ebere Chidi-Azuwike</p>
+    </footer>
+
+    <script>
+        // Toggle mobile navigation
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                button.classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // Animate skill bars on page load
+        window.addEventListener('load', () => {
+            const skillProgress = document.querySelectorAll('.skill-progress');
+            skillProgress.forEach(progress => {
+                const width = progress.style.width;
+                progress.style.width = '0';
+                setTimeout(() => {
+                    progress.style.width = width;
+                }, 300);
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (navLinks.classList.contains('show')) {
+                        navLinks.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Modal functionality for gallery
+        const galleryCards = document.querySelectorAll('.gallery-card');
+        const modals = document.querySelectorAll('.modal');
+        const modalCloses = document.querySelectorAll('.modal-close');
+
+        galleryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'flex';
+            });
+        });
+
+        modalCloses.forEach(close => {
+            close.addEventListener('click', () => {
+                modals.forEach(modal => modal.style.display = 'none');
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                modals.forEach(modal => modal.style.display = 'none');
+            }
+        });
+    </script>
+</body>
+</html>
