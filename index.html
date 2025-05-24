@@ -5,15 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shalom Chidi-Azuwike | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="icon" href="cabondo.png" type="image/png" />
+    <link rel="icon" href="asha.png" type="image/png" />
     <style>
+        /* :root { */
+            /* --primary-color: #ff5e00; /* orangered */
+            /* --secondary-color: #bb86fc;
+            --accent-color: #03dac6;
+            --dark-bg: #121212;
+            --darker-bg: #1f1b24;
+            --text-color: #ffffff;
+        } */
         :root {
-            --primary-color: #ff4500; /* orangered */
+            /* Default Dark Theme */
+            --primary-color: #ff4500;
             --secondary-color: #bb86fc;
             --accent-color: #03dac6;
             --dark-bg: #121212;
             --darker-bg: #1f1b24;
             --text-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --grid-line-color: rgba(255, 255, 255, 0.05); /* Grid line color for dark theme */
+        }
+
+        [data-theme="light"] {
+            --primary-color: #e63946;
+            --secondary-color: #457b9d;
+            --accent-color: #1d3557;
+            --dark-bg: #f1f1f1;
+            --darker-bg: #b5b5b5;
+            --text-color: #1d3557;
+            --card-bg: rgba(0, 0, 0, 0.05);
+            --grid-line-color: rgba(0, 0, 0, 0.1); /* Grid line color for light theme */
         }
 
         * {
@@ -24,14 +46,36 @@
 
         body {
             background: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
             background-size: 20px 20px;
             background-color: var(--dark-bg);
             color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.2);
+            color: var(--primary-color);
+        }
+
 
         /* Navbar */
         header {
@@ -80,7 +124,11 @@
             overflow: hidden;
             transition: color 0.3s ease;
         }
-
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
         .nav-links a::before {
             content: '';
             position: absolute;
@@ -214,8 +262,9 @@
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 600px;
+            max-width: 1000px;
             margin-bottom: 2rem;
+            
             line-height: 1.6;
         }
 
@@ -256,6 +305,13 @@
             display: flex;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 2rem;
+            white-space: nowrap; /* prevents tab buttons from wrapping */
+            -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+            scrollbar-width: none; /* hide scrollbar for Firefox */
+            gap: 0.5rem;
+        }
+        .journey-tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .tab-button {
@@ -397,11 +453,32 @@
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: floatCard 4s ease-in-out infinite;
         }
+        
+
+         .project-card:nth-child(1) { border: 2px solid #ff0000;  }
+        .project-card:nth-child(2) { border: 2px solid #ff7f00; }
+        .project-card:nth-child(3) { border: 2px solid #ffff00; }
+        .project-card:nth-child(4) { border: 2px solid #00ff00; }
+        .project-card:nth-child(5) { border: 2px solid #00ffff; }
+        .project-card:nth-child(6) { border: 2px solid #0000ff; }
+        .project-card:nth-child(7) { border: 2px solid #800080; }
+        .project-card:nth-child(8) { border: 2px solid #00ff7b; }
+        .project-card:nth-child(9) { border: 2px solid #ff1493; }
+        .project-card:nth-child(10) { border: 2px solid #ff5900; }
+        .project-card:nth-child(11) { border: 2px solid #ffd700; }
 
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+       
+        }
+        @keyframes floatCard {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
         }
 
         .project-content {
@@ -445,6 +522,8 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        
         }
 
         .gallery-card:hover {
@@ -466,6 +545,24 @@
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
+        }
+        /* .hidden-card {
+            display: none;
+        } */
+
+        .load-more-button {
+            background: none;
+            border: none;
+            color: var(--primary-color); 
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .load-more-button:hover {
+            color: white;
         }
 
         /* Modal for Expanded Gallery */
@@ -548,6 +645,65 @@
             opacity: 0.8;
         }
 
+         /* Contact Modal */
+        .contact-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .contact-button:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-modal .modal-content {
+            max-width: 500px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            background: var(--card-bg);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            color: var(--text-color);
+        }
+
+        .contact-form button {
+            padding: 0.8rem;
+            background: linear-gradient(45deg, var(--primary-color), #ff6347);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-3px);
+        }
+
+        
+
+
+
         /* Footer */
         footer {
             background: var(--darker-bg);
@@ -561,7 +717,10 @@
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
-
+        
+        #gallery .load-more-container {
+                display: none !important;
+        }
         .social-links a {
             display: flex;
             align-items: center;
@@ -583,7 +742,39 @@
         .footer-text {
             opacity: 0.7;
         }
+        
 
+        @media (max-width: 600px) {
+            .tab-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            .logo{font-size: 1.4rem;
+            }
+            #gallery .load-more-container {
+                display: block !important;
+            }
+             #gallery .gallery-grid .hidden-card {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 769px) {
+            #gallery .load-more-container {
+                display: none !important;
+            }
+            #gallery .gallery-grid .hidden-card:not([data-modal="modal18"]) {
+                display: block !important;
+            }
+            #gallery .gallery-grid .hidden-card[data-modal="modal18"] {
+                display: none !important;
+            }
+            }
+            .tab-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
@@ -606,6 +797,10 @@
                 box-shadow: none;
             }
 
+            .logo{
+                font-size: 1.4rem;
+            }
+
             .nav-toggle {
                 display: block;
             }
@@ -618,19 +813,45 @@
                 grid-template-columns: 1fr;
             }
 
+            .tab-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
             .modal-content {
                 width: 95%;
+            }
+            .contact-button {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            .theme-toggle {
+                font-size: 1.2rem;
+                padding: 0.3rem;
+            }
+             #gallery .gallery-grid .hidden-card {
+                display: none !important;
+            }
+            #gallery .load-more-container {
+                display: block !important;
             }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
     <header>
         <div class="navbar">
             <a href="#" class="logo">Shalom Chidi-Azuwike</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-container">
+                <div class="theme-switcher">
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#journey">Journey</a>
@@ -665,7 +886,10 @@
             </div>
             
             <div id="skills-tab" class="tab-content active">
+                <br>
                 <h3>Coding Skills</h3>
+                <br>
+                <br>
                 <div class="skills-container">
                     <div class="skill-item">
                         <div class="skill-info">
@@ -704,8 +928,10 @@
                         </div>
                     </div>
                 </div>
-                
+                <br>
                 <h3>Professional Skills</h3>
+                <br>
+                <br>
                 <div class="skills-container">
                     <div class="skill-item">
                         <div class="skill-info">
@@ -795,14 +1021,14 @@
                     <div class="education-date">2021 - Present</div>
                     <h3 class="education-degree">Bachelor of Engineering in Software Engineering</h3>
                     <div class="education-school">Federal University of Technology, Owerri (FUTO)</div>
-                    <p>Current CGPA: 4.86/5.0. Focused on coding and empowering women in tech.</p>
+                    <p>Focused on coding and empowering women in tech.</p>
                     <p>Coursework: Data Structures, Machine Learning, Web Technologies</p>
                 </div>
                 <div class="education-item">
-                        <div class="education-date">2015 - 2021</div>
-                        <h3 class="education-degree">Secondary Education</h3>
-                        <div class="education-school">Federal Government Girls' College, Owerri</div>
-                        <p>Commonwealth Club member, representing New Zealand.</p>
+                    <div class="education-date">2015 - 2021</div>
+                    <h3 class="education-degree">Secondary Education</h3>
+                    <div class="education-school">Federal Government Girls' College, Owerri</div>
+                    <p>Commonwealth Club member, representing New Zealand.</p>
                 </div>
                 <div class="education-item">
                     <div class="education-date">Feb 2020</div>
@@ -891,11 +1117,18 @@
                     </div>
                     <div class="project-card">
                         <div class="project-content">
-                            <h3 class="project-title">Renewable Energy Garden <i class="fas fa-leaf"></i></h3>
-                            <p class="project-desc">A sustainable energy project with Eauxwell Nigeria at FUTO, using IoT and data analytics.</p>
-                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="project-title">Nigeria Net<i class="fas fa-leaf"></i></h3>
+                            <p class="project-desc">A Nitda Event at FUTO.</p>
+                            <a href="https://nigerianet.netlify.app/" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
+                    <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">My CV <i class="fas fa-file-alt"></i></h3>
+                        <p class="project-desc">A detailed document highlighting my work, skills, education, and achievements.</p>
+                        <a href="Shalom CV.pdf" target="_blank" class="project-link">View CV <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -935,14 +1168,26 @@
                             <p>Organizing tech events.</p>
                         </div>
                     </div>
-                    <div class="gallery-card" data-modal="modal5">
+                    <div class="gallery-card hidden-card" data-modal="modal5">
                         <img src="eauxwell.png" alt="Eauxwell Nigeria" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">Eauxwell Nigeria</h3>
                             <p>Renewable energy innovations.</p>
                         </div>
                     </div>
+                    <div class="gallery-card hidden-card">
+                        <a href="Shalom CV.pdf" target="_blank">
+                            <img src="cv-icon.png" alt="My CV" class="gallery-image">
+                        </a>
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">My CV</h3>
+                            <p>View my resume here.</p>
+                        </div>
+                    </div>
                 </div>
+                <div class="load-more-container">
+                    <button class="load-more-button" data-gallery="work">Load More</button>
+                </div>        
             </div>
             <br>
             <br>
@@ -952,6 +1197,20 @@
                 <br>
                 <br>
                 <div class="gallery-grid">
+                    <div class="gallery-card" data-modal="modal17">
+                        <img src="shalom porto.png" alt="My new Portfolio" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Shalom Chidi-Azuwike</h3>
+                            <p>My Current Portfolio</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card" data-modal="modal9">
+                        <a href="https://phantomzcollectionx.vercel.app"><img src="phan.png" alt="Phantomzcollectionx Website " class="gallery-image"></a>
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Phantomzcollectionx Website</h3>
+                            <p>Sales tools for businesses.</p>
+                        </div>
+                    </div>
                     <div class="gallery-card" data-modal="modal6">
                         <img src="janessa.png" alt="Janessa AI" class="gallery-image">
                         <div class="gallery-content">
@@ -966,76 +1225,80 @@
                             <p>Interplanetary game adventure.</p>
                         </div>
                     </div>
-                    <div class="gallery-card" data-modal="modal8">
+                    <div class="gallery-card hidden-card" data-modal="modal13">
+                        <a href="https://keedceejaye.netlify.app/">
+                            <img src="keedceejaye.png" alt="KeedCeeJaye Website" class="gallery-image">
+                        </a>
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">KeedCeeJaye</h3>
+                            <p>My little brother's portfolio.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card hidden-card" data-modal="modal10">
+                        <img src="PhantomzCompanyEmployees.png" alt="Phantomzcollectionx App" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Phantomzcollectionx App</h3>
+                            <p>Recording tools for businesses.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card hidden-card" data-modal="modal8">
                         <img src="scdas.png" alt="ScriptureDash" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">ScriptureDash</h3>
                             <p>Gamified Bible learning app.</p>
                         </div>
                     </div>
-                    <div class="gallery-card" data-modal="modal9">
-                        <a href="https://phantomzcollectionx.vercel.app"><img src="phan.png" alt="Phantomzcollectionx Website " class="gallery-image"></a>
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Phantomzcollectionx Website</h3>
-                            <p>Sales tools for businesses.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card" data-modal="modal9">
-                        <a href="https://phantomzcollectionx.vercel.app"><img src="PhantomzCompanyEmployees.png"  alt="Phantomzcollectionx App " class="gallery-image"></a>
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Phantomzcollectionx App</h3>
-                            <p>Recording tools for businesses.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card" data-modal="modal9">
-                        <img src="gps.png" alt="MaryAnn GPS App " class="gallery-image">
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Maryann GPS App</h3>
-                            <p>Smooth GPS Tracker</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card" data-modal="modal9">
-                        <img src="nganet.png" alt="Nigeria Net Website Website " class="gallery-image">
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">Nigeria Net</h3>
-                            <p>My first responsive website</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card" data-modal="modal9">
-                        <a href="https://keedceejaye.netlify.app/"><img src="keedceejaye.png" alt="KeedCeeJaye Website " class="gallery-image"></a>
-                        <div class="gallery-content">
-                            <h3 class="gallery-title">KeedCeeJaye</h3>
-                            <p> My little brother's portfolio.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card" data-modal="modal10">
-                        <img src="franweather.png" alt="Weather App" class="gallery-image">
+                    <div class="gallery-card hidden-card" data-modal="modal14">
+                        <a href="#">
+                            <img src="franweather.png" alt="Weather App" class="gallery-image">
+                        </a>
                         <div class="gallery-content">
                             <h3 class="gallery-title">Weather App</h3>
                             <p>Real-time weather updates.</p>
                         </div>
                     </div>
-                    <div class="gallery-card" data-modal="modal10">
-                        <img src="oldport.png" alt="Shalom's Old Portfolio" class="gallery-image">
+                    <div class="gallery-card hidden-card" data-modal="modal11">
+                        <img src="gps.png" alt="MaryAnn GPS App" class="gallery-image">
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Maryann GPS App</h3>
+                            <p>Smooth GPS Tracker</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card hidden-card" data-modal="modal12">
+                        <a href="https://nigerianet.netlify.app/">
+                            <img src="nganet.png" alt="Nigeria Net Website" class="gallery-image">
+                        </a>
+                        <div class="gallery-content">
+                            <h3 class="gallery-title">Nigeria Net</h3>
+                            <p>My first responsive website</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card hidden-card" data-modal="modal15">
+                        <a href="https://shalomchidi-azuwike.netlify.app/">
+                            <img src="oldport.png" alt="Shalom's Old Portfolio" class="gallery-image">
+                        </a>
                         <div class="gallery-content">
                             <h3 class="gallery-title">Shalom's Old Portfolio</h3>
                             <p>Old Portfolio</p>
                         </div>
                     </div>
-                    <div class="gallery-card" data-modal="modal10">
+                    <div class="gallery-card hidden-card" data-modal="modal16">
                         <img src="fake caution screen.png" alt="Fake Caution Screen" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">Fake Caution Screen</h3>
                             <p>Fake Caution Screen to ward off intruders.</p>
                         </div>
                     </div>
-                    <div class="gallery-card" data-modal="modal9">
-                        <img src="shalom porto.png" alt="My new Portfolio" class="gallery-image">
+                    <div class="gallery-card hidden-card" data-modal="modal18">
+                        <img src="shacabondo.png" alt="New Project" class="gallery-image">
                         <div class="gallery-content">
-                            <h3 class="gallery-title">Shalom Chidi-Azuwike</h3>
-                            <p>My Current Portfolio</p>
+                            <h3 class="gallery-title">shacabondo.com</h3>
+                            <p>My first website ever.</p>
                         </div>
                     </div>
+                </div>
+                <div class="load-more-container">
+                    <button class="load-more-button" data-gallery="project">Load More</button>
                 </div>
             </div>
         </section>
@@ -1063,7 +1326,86 @@
                 </div>
             </div>
         </div>
-        <!-- Add more modals as needed -->
+        <div id="modal14" class="modal">
+            <div class="modal-inner">
+                <span class="modal-close">&times;</span>
+                <h2>Weather App Demo</h2>
+                <div class="video-container">
+                    <iframe width="100%" height="315" 
+                        src="https://www.youtube.com/embed/tWvhUd_w4vI" 
+                        title="Weather App Demo" 
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div id="modal6" class="modal">
+            <div class="modal-inner">
+                <span class="modal-close">&times;</span>
+                <h2>Loading...</h2>
+            </div>
+        </div>
+        <div id="modal7" class="modal">
+            <div class="modal-inner image-modal">
+                <span class="modal-close">&times;</span>
+                <h2>MarsoVerse Screenshot</h2>
+                <div class="image-container">
+                    <img src="marso.png" alt="MarsoVerse Screenshot">
+                </div>
+            </div>
+        </div>
+        <div id="modal8" class="modal">
+            <div class="modal-inner image-modal">
+                <span class="modal-close">&times;</span>
+                <h2>Scripture Dash Screenshot</h2>
+                <div class="image-container">
+                    <img src="scdash.png" alt="Scripture Dash Screenshot">
+                </div>
+            </div>
+        </div>
+        <div id="modal16" class="modal">
+            <div class="modal-inner image-modal">
+                <span class="modal-close">&times;</span>
+                <h2>Fake caution screen Screenshot</h2>
+                <div class="image-container">
+                    <img src="fake caution screen.png" alt="Fake Caution Screen Screenshot">
+                </div>
+            </div>
+        </div>
+        <div id="modal11" class="modal">
+            <div class="modal-inner image-modal">
+                <span class="modal-close">&times;</span>
+                <h2>GPS Screenshot</h2>
+                <div class="image-container">
+                    <img src="gps.png" alt="Fake Caution Screen Screenshot">
+                </div>
+            </div>
+        </div>
+       <div id="modal10" class="modal">
+            <div class="modal-inner">
+                <span class="modal-close">&times;</span>
+                <h2>Phantomzcollectionx App Demo</h2>
+                <div class="video-container">
+                    <iframe width="100%" height="315" 
+                        src="https://www.youtube.com/embed/K2PfxzZPhQc" 
+                        title="Phantomzcollectionx App Demo" 
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Modal -->
+        <button class="contact-button" title="Contact Me"><i class="fas fa-envelope"></i></button>
+        <div id="contact-modal" class="modal contact-modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Contact Me</h3>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -1159,6 +1501,58 @@
                 modals.forEach(modal => modal.style.display = 'none');
             }
         });
+
+         // Contact Modal
+        const contactButton = document.querySelector('.contact-button');
+        const contactModal = document.querySelector('#contact-modal');
+        
+        contactButton.addEventListener('click', () => {
+            contactModal.style.display = 'flex';
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const workLoadMoreBtn = document.querySelector('#work-gallery .load-more-button');
+            const projectLoadMoreBtn = document.querySelector('#project-gallery .load-more-button');
+            let workExpanded = false;
+            let projectExpanded = false;
+
+            workLoadMoreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const hiddenWorkCards = document.querySelectorAll('#work-gallery .hidden-card');
+                hiddenWorkCards.forEach(card => {
+                    card.style.display = workExpanded ? 'none' : 'block';
+                });
+                workLoadMoreBtn.textContent = workExpanded ? 'Load More' : 'Show Less';
+                workExpanded = !workExpanded;
+            });
+
+            projectLoadMoreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const hiddenProjectCards = document.querySelectorAll('#project-gallery .hidden-card');
+                hiddenProjectCards.forEach(card => {
+                    card.style.display = projectExpanded ? 'none' : 'block';
+                });
+                projectLoadMoreBtn.textContent = projectExpanded ? 'Load More' : 'Show Less';
+                projectExpanded = !projectExpanded;
+            });
+        });
+
+        
+        // Theme Toggle Functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = `<i class="fas fa-${newTheme === 'dark' ? 'moon' : 'sun'}"></i>`;
+        });
+
+        // Initialize theme icon
+        const initialTheme = body.getAttribute('data-theme') || 'dark';
+        themeToggle.innerHTML = `<i class="fas fa-${initialTheme === 'dark' ? 'moon' : 'sun'}"></i>`;
+    
     </script>
 </body>
 </html>
