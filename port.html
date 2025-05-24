@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shalom Chidi-Azuwike | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="icon" href="cabondo.png" type="image/png" />
     <style>
         :root {
             --primary-color: #ff4500; /* orangered */
@@ -52,7 +51,7 @@
         }
 
         .logo {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
@@ -195,10 +194,57 @@
         .hero {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            background: radial-gradient(circle at top right, rgba(255, 69, 0, 0.2), transparent);
             min-height: 80vh;
-            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 1rem;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-image {
+            flex: 0 0 auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInRight 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            animation: pulse 2s infinite;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 69, 0, 0.2), transparent);
+            z-index: -1;
         }
 
         .hero h1 {
@@ -214,19 +260,16 @@
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
             line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
-        .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-color);
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
+        @keyframes fadeInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes pulse {
@@ -580,6 +623,10 @@
             opacity: 0.9;
         }
 
+        .social-links a i {
+            font-size: 1.1rem;
+        }
+
         .footer-text {
             opacity: 0.7;
         }
@@ -610,6 +657,33 @@
                 display: block;
             }
 
+            .hero-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                animation: fadeIn 1s ease forwards;
+            }
+
+            .hero-image {
+                margin-top: 1rem;
+                animation: fadeIn 1s ease forwards;
+                animation-delay: 0.2s;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-background {
+                width: 100%;
+                background: radial-gradient(circle at center, rgba(255, 69, 0, 0.15), transparent);
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -634,36 +708,34 @@
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#journey">Journey</a>
-                <!-- <div class="dropdown"> -->
                 <a href="#gallery">Gallery</a>
-                <!-- class="dropbtn">Gallery <i class="fas fa-chevron-down"> -->
-                <!-- <div class="dropdown-content">
-                    <a href="#work-gallery">Work Experience</a>
-                    <a href="#project-gallery">Projects</a>
-                </div> -->
-                </div>
             </div>
         </div>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <img src="cabondo.png" alt="Shalom Chidi-Azuwike" class="profile-photo">
-            <h1>Hello, I'm <span>Shalom</span></h1>
-            <p>Hi, I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at the Federal University of Technology Owerri, Nigeria. I'm passionate about AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I advocate for digital skills and innovation. My love for reading, sparked at age four, led me to author books like <i>The Billionaire's Son</i> and <i>Caught in Between</i> under the pseudonym Jaime Cabary. I've developed websites like KeedCeeJaye, Phantomzcollectionx.vercel.app, and my portfolio, plus apps like Bizvest, ScriptureDash, and a GPS app. My projects include Janessa AI, MarsoVerse, and a Weather app. Inspired by Elon Musk, I aim to create robotic art and contribute to humanity's multiplanetary future.</p>
-            <a href="#journey" class="cta-button">Explore My Journey</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hello, I'm <span>Shalom</span></h1>
+                    <p>Hi, I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at FUTO with a CGPA of 4.86. I'm passionate about AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I advocate for digital skills and innovation. My love for reading, sparked at age four, led me to author books like <i>The Billionaire's Son</i> and <i>Caught in Between</i> under the pseudonym Jaime Cabary. I've developed websites like KeedCeeJaye, Phantomzcollectionx.vercel.app, and my portfolio, plus apps like Bizvest, ScriptureDash, and a GPS app. My projects include Janessa AI, MarsoVerse, and a Weather app. Inspired by Elon Musk, I aim to create robotic art and contribute to humanity's multiplanetary future.</p>
+                    <a href="#journey" class="cta-button">Explore My Journey</a>
+                </div>
+                <div class="hero-image">
+                    <img src="cabondo.png" alt="Shalom Chidi-Azuwike" class="profile-photo">
+                </div>
+            </div>
+            <div class="hero-background"></div>
         </section>
 
         <section id="journey">
             <h2 class="section-title">My Journey</h2>
-            
             <div class="journey-tabs">
-                <button class="tab-button active" data-tab="skills"><strong>Skills</strong> </button>
-                <button class="tab-button" data-tab="experience"><strong> Experience</strong> </button>
-                <button class="tab-button" data-tab="education"><strong> Education</strong> </button>
-                <button class="tab-button" data-tab="projects"><strong> Projects</strong> </button>
+                <button class="tab-button active" data-tab="skills"><strong>Skills</strong></button>
+                <button class="tab-button" data-tab="experience"><strong>Experience</strong></button>
+                <button class="tab-button" data-tab="education"><strong>Education</strong></button>
+                <button class="tab-button" data-tab="projects"><strong>Projects</strong></button>
             </div>
-            
             <div id="skills-tab" class="tab-content active">
                 <h3>Coding Skills</h3>
                 <div class="skills-container">
@@ -704,7 +776,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <h3>Professional Skills</h3>
                 <div class="skills-container">
                     <div class="skill-item">
@@ -754,7 +825,6 @@
                     </div>
                 </div>
             </div>
-            
             <div id="experience-tab" class="tab-content">
                 <div class="timeline">
                     <div class="timeline-item">
@@ -789,7 +859,6 @@
                     </div>
                 </div>
             </div>
-            
             <div id="education-tab" class="tab-content">
                 <div class="education-item">
                     <div class="education-date">2021 - Present</div>
@@ -799,10 +868,10 @@
                     <p>Coursework: Data Structures, Machine Learning, Web Technologies</p>
                 </div>
                 <div class="education-item">
-                        <div class="education-date">2015 - 2021</div>
-                        <h3 class="education-degree">Secondary Education</h3>
-                        <div class="education-school">Federal Government Girls' College, Owerri</div>
-                        <p>Commonwealth Club member, representing New Zealand.</p>
+                    <div class="education-date">2015 - 2021</div>
+                    <h3 class="education-degree">Secondary Education</h3>
+                    <div class="education-school">Federal Government Girls' College, Owerri</div>
+                    <p>Commonwealth Club member, representing New Zealand.</p>
                 </div>
                 <div class="education-item">
                     <div class="education-date">Feb 2020</div>
@@ -823,56 +892,55 @@
                     <p>Training in modern web development techniques.</p>
                 </div>
             </div>
-            
             <div id="projects-tab" class="tab-content">
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Janessa AI <i class="fas fa-brain"></i></h3>
                             <p class="project-desc">An AI project enhancing user interactions through natural language processing, creating personalized conversational experiences.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">MarsoVerse <i class="fas fa-rocket"></i></h3>
                             <p class="project-desc">A game inspired by interplanetary exploration, blending immersive storytelling with interactive gameplay.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">ScriptureDash <i class="fas fa-book"></i></h3>
                             <p class="project-desc">A Bible app designed like Duolingo, gamifying scripture learning with interactive challenges.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Phantomzcollectionx app <i class="fas fa-mobile-alt"></i></h3>
                             <p class="project-desc">A mobile app empowering small businesses with tools for managing, budgeting and tracking.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Weather App <i class="fas fa-cloud"></i></h3>
                             <p class="project-desc">A user-friendly app providing real-time weather updates with a sleek interface.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">GPS App <i class="fas fa-map-marker-alt"></i></h3>
                             <p class="project-desc">A navigation app offering precise location tracking and route planning.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">KeedCeeJaye <i class="fas fa-globe"></i></h3>
                             <p class="project-desc">A dynamic website showcasing creative content and tech innovations.</p>
-                            <a href="https://keedceejaye.netlify.app/" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://keedceejaye.com" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
@@ -974,38 +1042,38 @@
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal9">
-                        <a href="https://phantomzcollectionx.vercel.app"><img src="phan.png" alt="Phantomzcollectionx Website " class="gallery-image"></a>
+                        <img src="phan.png" alt="Phantomzcollectionx Website" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">Phantomzcollectionx Website</h3>
                             <p>Sales tools for businesses.</p>
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal9">
-                        <a href="https://phantomzcollectionx.vercel.app"><img src="PhantomzCompanyEmployees.png"  alt="Phantomzcollectionx App " class="gallery-image"></a>
+                        <img src="PhantomzCompanyEmployees.png" alt="Phantomzcollectionx App" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">Phantomzcollectionx App</h3>
                             <p>Recording tools for businesses.</p>
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal9">
-                        <img src="gps.png" alt="MaryAnn GPS App " class="gallery-image">
+                        <img src="gps.png" alt="MaryAnn GPS App" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">Maryann GPS App</h3>
                             <p>Smooth GPS Tracker</p>
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal9">
-                        <img src="nganet.png" alt="Nigeria Net Website Website " class="gallery-image">
+                        <img src="nganet.png" alt="Nigeria Net Website" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">Nigeria Net</h3>
                             <p>My first responsive website</p>
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal9">
-                        <a href="https://keedceejaye.netlify.app/"><img src="keedceejaye.png" alt="KeedCeeJaye Website " class="gallery-image"></a>
+                        <img src="keedceejaye.png" alt="KeedCeeJaye Website" class="gallery-image">
                         <div class="gallery-content">
                             <h3 class="gallery-title">KeedCeeJaye</h3>
-                            <p> My little brother's portfolio.</p>
+                            <p>My little brother's portfolio.</p>
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal10">
@@ -1046,9 +1114,9 @@
                 <button class="modal-close"><i class="fas fa-times"></i></button>
                 <h3>Kabary Software Gallery</h3>
                 <div class="modal-gallery">
-                    <img src="keedceejaye.png" alt="Project 1" class="modal-image">
-                    <img src="janessa.png" alt="Project 2" class="modal-image">
-                    <img src="marso.png" alt="Project 3" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Project 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Project 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Project 3" class="modal-image">
                 </div>
             </div>
         </div>
@@ -1057,24 +1125,111 @@
                 <button class="modal-close"><i class="fas fa-times"></i></button>
                 <h3>Microsoft Gallery</h3>
                 <div class="modal-gallery">
-                    <img src="mlsa.png" alt="Event 1" class="modal-image">
-                    <img src="ieee.png" alt="Event 2" class="modal-image">
-                    <img src="phan.png" alt="Event 3" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Event 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Event 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Event 3" class="modal-image">
                 </div>
             </div>
         </div>
-        <!-- Add more modals as needed -->
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Samsung Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="Samsung Event 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Samsung Event 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Samsung Event 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>IEEE FUTO Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="IEEE Event 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="IEEE Event 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="IEEE Event 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal5" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Eauxwell Nigeria Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="Eauxwell Project 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Eauxwell Project 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Eauxwell Project 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal6" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Janessa AI Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="Janessa AI 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Janessa AI 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Janessa AI 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal7" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>MarsoVerse Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="MarsoVerse 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="MarsoVerse 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="MarsoVerse 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal8" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>ScriptureDash Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="ScriptureDash 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="ScriptureDash 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="ScriptureDash 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal9" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Phantomzcollectionx & Other Websites Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="Website 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Website 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Website 3" class="modal-image">
+                </div>
+            </div>
+        </div>
+        <div id="modal10" class="modal">
+            <div class="modal-content">
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+                <h3>Weather App & Other Projects Gallery</h3>
+                <div class="modal-gallery">
+                    <img src="https://via.placeholder.com/200" alt="Project 1" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Project 2" class="modal-image">
+                    <img src="https://via.placeholder.com/200" alt="Project 3" class="modal-image">
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
         <div class="social-links"> 
-            <a href="https://linkedin.com/in/shalom-chidi-azuwike-752b47321" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://linkedin.com/in/shalom-chidi-azuwike-752b47321" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="mailto:shazzyazuwike@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/JaimeCabary" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Shalom-Azuwike" aria-label="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://medium.com/@shazzyazuwike" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
             <a href="https://linktr.ee/shalomazuwike" aria-label="Linktree"><i class="fas fa-link"></i></a>
         </div>
-        <p class="footer-text">© 2025 Shalom Ebere Chidi-Azuwike</p>
+        <p class="footer-text">© 2025 Shalom Ebere Chidi-Azuwike <i class="fas fa-copyright"></i></p>
     </footer>
 
     <script>
@@ -1099,6 +1254,17 @@
                 
                 button.classList.add('active');
                 document.getElementById(`${tabId}-tab`).classList.add('active');
+
+                if (tabId === 'skills') {
+                    const skillProgress = document.querySelectorAll('.skill-progress');
+                    skillProgress.forEach(progress => {
+                        const width = progress.style.width;
+                        progress.style.width = '0';
+                        setTimeout(() => {
+                            progress.style.width = width;
+                        }, 300);
+                    });
+                }
             });
         });
         
@@ -1144,7 +1310,9 @@
             card.addEventListener('click', () => {
                 const modalId = card.getAttribute('data-modal');
                 const modal = document.getElementById(modalId);
-                modal.style.display = 'flex';
+                if (modal) {
+                    modal.style.display = 'flex';
+                }
             });
         });
 
@@ -1156,6 +1324,13 @@
 
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
+                modals.forEach(modal => modal.style.display = 'none');
+            }
+        });
+
+        // Keyboard accessibility for modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
                 modals.forEach(modal => modal.style.display = 'none');
             }
         });
