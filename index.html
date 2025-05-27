@@ -514,6 +514,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
+            
         }
 
         .gallery-card {
@@ -700,7 +701,9 @@
             transform: translateY(-3px);
         }
 
-        
+        #gallery .gallery-grid .hidden-card[data-modal="modal18"] {
+            display: none !important;
+        }
 
 
 
@@ -717,10 +720,7 @@
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
-        
-        #gallery .load-more-container {
-                display: none !important;
-        }
+
         .social-links a {
             display: flex;
             align-items: center;
@@ -742,41 +742,36 @@
         .footer-text {
             opacity: 0.7;
         }
-        
 
-        @media (max-width: 600px) {
+        @media screen and (max-width: 600px) {
             .tab-button {
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
             }
             .logo{font-size: 1.4rem;
             }
+            #gallery .gallery-grid .hidden-card {
+                display: none !important;
+            }
+
             #gallery .load-more-container {
                 display: block !important;
-            }
-             #gallery .gallery-grid .hidden-card {
-                display: none !important;
             }
         }
 
-        @media (max-width: 769px) {
+        /* Desktop view (>768px) */
+        @media screen and (min-width: 769px) {
             #gallery .load-more-container {
                 display: none !important;
             }
+
             #gallery .gallery-grid .hidden-card:not([data-modal="modal18"]) {
                 display: block !important;
             }
-            #gallery .gallery-grid .hidden-card[data-modal="modal18"] {
-                display: none !important;
-            }
-            }
-            .tab-button {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        
+        }
+                
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .navbar {
                 flex-wrap: wrap;
             }
@@ -814,7 +809,7 @@
             }
 
             .tab-button {
-                padding: 0.5rem 1rem;
+                padding: 0.75rem 1rem;
                 font-size: 0.9rem;
             }
 
@@ -829,16 +824,17 @@
                 font-size: 1.2rem;
                 padding: 0.3rem;
             }
-             #gallery .gallery-grid .hidden-card {
+            #gallery .gallery-grid .hidden-card {
                 display: none !important;
             }
+
             #gallery .load-more-container {
                 display: block !important;
             }
         }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
     <header>
         <div class="navbar">
             <a href="#" class="logo">Shalom Chidi-Azuwike</a>
@@ -1398,11 +1394,12 @@
             <div class="modal-content">
                 <button class="modal-close"><i class="fas fa-times"></i></button>
                 <h3>Contact Me</h3>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                <form id="contactForm" class="contact-form">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
                     <button type="submit">Send Message</button>
+                    <p id="formMessage" style="margin-top: 10px;"></p>
                 </form>
             </div>
         </div>
@@ -1553,6 +1550,54 @@
         const initialTheme = body.getAttribute('data-theme') || 'dark';
         themeToggle.innerHTML = `<i class="fas fa-${initialTheme === 'dark' ? 'moon' : 'sun'}"></i>`;
     
+
+        emailjs.init("k0uUXaq0mwV0gHNCX");
+        
+        const contactForm = document.getElementById("contactForm");
+        const formMessage = document.getElementById("formMessage");
+
+        contactForm.onsubmit = function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            fetch('http://localhost:3001/save-to-csv', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    formMessage.textContent = "Thank you for your message!";
+                    formMessage.style.color = "#00cc66"; // green
+                    contactModal.style.display = "none";
+
+                    sendWhatsAppMessage(name, email, message);
+                    sendEmail(email, name);
+                } else {
+                    throw new Error("Submission failed");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                formMessage.textContent = "Oops! Something went wrong. Please try again later.";
+                formMessage.style.color = "#ff0000";
+            });
+        };
+
+        function sendWhatsAppMessage(name, email, message) {
+            const text = `New Customer Signup:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+            const whatsappUrl = `https://wa.me/+2349136356595?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function sendEmail(toEmail, name) {
+            // You would need to implement this using a service like EmailJS or your server
+            console.log(`Email would be sent to ${toEmail} with name ${name}`);
+        }
     </script>
 </body>
 </html>
