@@ -23,8 +23,10 @@
             --dark-bg: #121212;
             --darker-bg: #1f1b24;
             --text-color: #ffffff;
+            --modal-color: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.05);
             --grid-line-color: rgba(255, 255, 255, 0.05); /* Grid line color for dark theme */
+            --skill-color: rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="light"] {
@@ -34,8 +36,10 @@
             --dark-bg: #f1f1f1;
             --darker-bg: #b5b5b5;
             --text-color: #1d3557;
+            --modal-color: #7e7ea0;
             --card-bg: rgba(0, 0, 0, 0.05);
             --grid-line-color: rgba(0, 0, 0, 0.1); /* Grid line color for light theme */
+            --skill-color: rgba(7, 4, 4, 0.1);
         }
 
         * {
@@ -92,6 +96,7 @@
             justify-content: space-between;
             align-items: center;
             max-width: 1200px;
+            position: static;
             margin: 0 auto;
         }
 
@@ -372,7 +377,7 @@
 
         .skill-bar {
             height: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--skill-color);
             border-radius: 4px;
             overflow: hidden;
         }
@@ -574,7 +579,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.8); 
             z-index: 200;
             align-items: center;
             justify-content: center;
@@ -594,14 +599,16 @@
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
+        .modal h2{
+            color: var(--modal-color);
+        }
         .modal-close {
             position: absolute;
             top: 1rem;
             right: 1rem;
             background: none;
             border: none;
-            color: var(--text-color);
+            color: var(--modal-color);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -750,16 +757,16 @@
             }
             .logo{font-size: 1.4rem;
             }
-            #gallery .gallery-grid .hidden-card {
+            /* #gallery .gallery-grid .hidden-card {
                 display: none !important;
             }
 
             #gallery .load-more-container {
                 display: block !important;
-            }
+            } */
         }
 
-        /* Desktop view (>768px) */
+     /* ?Desktop view (>768px) */
         @media screen and (min-width: 769px) {
             #gallery .load-more-container {
                 display: none !important;
@@ -824,13 +831,13 @@
                 font-size: 1.2rem;
                 padding: 0.3rem;
             }
-            #gallery .gallery-grid .hidden-card {
+             /* #gallery .gallery-grid .hidden-card {
                 display: none !important;
             }
 
             #gallery .load-more-container {
-                display: block !important;
-            }
+                display: block ;
+            } */ 
         }
     </style>
 </head>
@@ -867,7 +874,7 @@
         <section id="home" class="hero">
             <img src="cabondo.png" alt="Shalom Chidi-Azuwike" class="profile-photo">
             <h1>Hello, I'm <span>Shalom</span></h1>
-            <p>Hi, I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at the Federal University of Technology Owerri, Nigeria. I'm passionate about AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I advocate for digital skills and innovation. My love for reading, sparked at age four, led me to author books like <i>The Billionaire's Son</i> and <i>Caught in Between</i> under the pseudonym Jaime Cabary. I've developed websites like KeedCeeJaye, Phantomzcollectionx.vercel.app, and my portfolio, plus apps like Bizvest, ScriptureDash, and a GPS app. My projects include Janessa AI, MarsoVerse, and a Weather app. Inspired by Elon Musk, I aim to create robotic art and contribute to humanity's multiplanetary future.</p>
+            <p>Hi, I'm Shalom Chidi-Azuwike, a 20-year-old Software Engineering student at the Federal University of Technology Owerri, Nigeria. I'm passionate about AI, Data Science, Web3, and storytelling. As a Microsoft Learn Student Ambassador and Samsung Student Ambassador, I advocate for digital skills and innovation. My love for reading, sparked at age four, led me to author books like <i>The Billionaire's Son</i> and <i>Caught in Between</i> under the pseudonym Jaime Cabary. I've developed websites like KeedCeeJaye, Phantomzcollectionx.vercel.app, and my portfolio, plus app like ScriptureDash, and a GPS app. My projects include Janessa AI, MarsoVerse, and a Weather app. Inspired by Elon Musk, I aim to create robotic art and contribute to humanity's multiplanetary future.</p>
             <a href="#journey" class="cta-button">Explore My Journey</a>
         </section>
 
@@ -918,6 +925,24 @@
                         <div class="skill-info">
                             <span>JavaScript <i class="fab fa-js"></i></span>
                             <span>34%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 34%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Java <i class="fab fa-java"></i></span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 34%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>C++ <i class="fab fa-c++"></i></span>
+                            <span>50%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="width: 34%"></div>
@@ -1052,77 +1077,77 @@
                         <div class="project-content">
                             <h3 class="project-title">Janessa AI <i class="fas fa-brain"></i></h3>
                             <p class="project-desc">An AI project enhancing user interactions through natural language processing, creating personalized conversational experiences.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/JaimeCabary" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">MarsoVerse <i class="fas fa-rocket"></i></h3>
                             <p class="project-desc">A game inspired by interplanetary exploration, blending immersive storytelling with interactive gameplay.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/JaimeCabary" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">ScriptureDash <i class="fas fa-book"></i></h3>
                             <p class="project-desc">A Bible app designed like Duolingo, gamifying scripture learning with interactive challenges.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/JaimeCabary" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Phantomzcollectionx app <i class="fas fa-mobile-alt"></i></h3>
                             <p class="project-desc">A mobile app empowering small businesses with tools for managing, budgeting and tracking.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/JaimeCabary" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Weather App <i class="fas fa-cloud"></i></h3>
                             <p class="project-desc">A user-friendly app providing real-time weather updates with a sleek interface.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/JaimeCabary" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">GPS App <i class="fas fa-map-marker-alt"></i></h3>
                             <p class="project-desc">A navigation app offering precise location tracking and route planning.</p>
-                            <a href="https://github.com/JaimeCabary" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/JaimeCabary" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">KeedCeeJaye <i class="fas fa-globe"></i></h3>
                             <p class="project-desc">A dynamic website showcasing creative content and tech innovations.</p>
-                            <a href="https://keedceejaye.netlify.app/" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://keedceejaye.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Phantomzcollectionx <i class="fas fa-store"></i></h3>
                             <p class="project-desc">An e-commerce platform built on Vercel, featuring a modern shopping experience.</p>
-                            <a href="https://phantomzcollectionx.vercel.app" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://phantomzcollectionx.vercel.app" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Sasha’s Sashaydes <i class="fas fa-blog"></i></h3>
                             <p class="project-desc">A personal blog sharing my journey in tech, renewable energy, and creative writing.</p>
-                            <a href="https://sashassahaydes.blogspot.com" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://sashassahaydes.blogspot.com" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Nigeria Net<i class="fas fa-leaf"></i></h3>
                             <p class="project-desc">A Nitda Event at FUTO.</p>
-                            <a href="https://nigerianet.netlify.app/" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://nigerianet.netlify.app/" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="project-card">
                     <div class="project-content">
                         <h3 class="project-title">My CV <i class="fas fa-file-alt"></i></h3>
                         <p class="project-desc">A detailed document highlighting my work, skills, education, and achievements.</p>
-                        <a href="Shalom CV.pdf" target="_blank" class="project-link">View CV <i class="fas fa-arrow-right"></i></a>
+                        <a href="Shalom CV newerrr.pdf" target="_blank" class="project-link">View CV <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 </div>
@@ -1201,7 +1226,7 @@
                         </div>
                     </div>
                     <div class="gallery-card" data-modal="modal9">
-                        <a href="https://phantomzcollectionx.vercel.app"><img src="phan.png" alt="Phantomzcollectionx Website " class="gallery-image"></a>
+                        <a href="https://phantomzcollectionx.vercel.app"  target="_blank"><img src="phan.png" alt="Phantomzcollectionx Website " class="gallery-image"></a>
                         <div class="gallery-content">
                             <h3 class="gallery-title">Phantomzcollectionx Website</h3>
                             <p>Sales tools for businesses.</p>
@@ -1222,7 +1247,7 @@
                         </div>
                     </div>
                     <div class="gallery-card hidden-card" data-modal="modal13">
-                        <a href="https://keedceejaye.netlify.app/">
+                        <a href="https://keedceejaye.netlify.app/"  target="_blank">
                             <img src="keedceejaye.png" alt="KeedCeeJaye Website" class="gallery-image">
                         </a>
                         <div class="gallery-content">
@@ -1261,7 +1286,7 @@
                         </div>
                     </div>
                     <div class="gallery-card hidden-card" data-modal="modal12">
-                        <a href="https://nigerianet.netlify.app/">
+                        <a href="https://nigerianet.netlify.app/" target="_blank">
                             <img src="nganet.png" alt="Nigeria Net Website" class="gallery-image">
                         </a>
                         <div class="gallery-content">
@@ -1270,7 +1295,7 @@
                         </div>
                     </div>
                     <div class="gallery-card hidden-card" data-modal="modal15">
-                        <a href="https://shalomchidi-azuwike.netlify.app/">
+                        <a href="https://shalomchidi-azuwike.netlify.app/" target="_blank">
                             <img src="oldport.png" alt="Shalom's Old Portfolio" class="gallery-image">
                         </a>
                         <div class="gallery-content">
@@ -1519,7 +1544,7 @@
                 hiddenWorkCards.forEach(card => {
                     card.style.display = workExpanded ? 'none' : 'block';
                 });
-                workLoadMoreBtn.textContent = workExpanded ? 'Load More' : 'Show Less';
+                workLoadMoreBtn.textContent = workExpanded ? 'Load More': 'Show Less';
                 workExpanded = !workExpanded;
             });
 
@@ -1529,7 +1554,7 @@
                 hiddenProjectCards.forEach(card => {
                     card.style.display = projectExpanded ? 'none' : 'block';
                 });
-                projectLoadMoreBtn.textContent = projectExpanded ? 'Load More' : 'Show Less';
+                projectLoadMoreBtn.textContent = projectExpanded ? 'Load More': 'Show Less';
                 projectExpanded = !projectExpanded;
             });
         });
@@ -1598,6 +1623,18 @@
             // You would need to implement this using a service like EmailJS or your server
             console.log(`Email would be sent to ${toEmail} with name ${name}`);
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Set target="_blank" for all links
+            document.querySelectorAll('a').forEach(link => {
+            link.setAttribute('target', '_blank');
+            });
+
+            // Remove target for links inside .modal-content
+            document.querySelectorAll('.modal-content a').forEach(link => {
+            link.removeAttribute('target');
+            });
+        });
     </script>
 </body>
 </html>
