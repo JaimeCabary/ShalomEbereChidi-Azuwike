@@ -61,7 +61,7 @@ To view the site locally, you can either:
 ```bash
 python -m http.server 8000
 ```
-##Then visit: [http://localhost:8000](http://localhost:8000) in your browser.
+Then visit: [http://localhost:8000](http://localhost:8000) in your browser.
 
 ---
 
