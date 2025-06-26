@@ -60,3 +60,36 @@ To view the site locally, you can either:
 
 ```bash
 python -m http.server 8000
+```
+##Then visit: [http://localhost:8000](http://localhost:8000) in your browser.
+
+---
+
+## ☁️ Optional Hosting
+
+To make the portfolio publicly accessible, consider hosting on:
+
+- [Netlify](https://www.netlify.com/)
+- [GitHub Pages](https://pages.github.com/)
+- [Vercel](https://vercel.com/)
+
+---
+
+## 🔗 Links
+
+- **Live Portfolio:** [shalomeberechidi-azuwike.netlify.app](https://shalomeberechidi-azuwike.netlify.app)  
+- **LinkedIn:** [shalom-chidi-azuwike](https://www.linkedin.com/in/shalom-chidi-azuwike)  
+- **GitHub:** [Shalom-Azuwike](https://github.com/Shalom-Azuwike)  
+- **Medium:** [@shazzyazuwike](https://medium.com/@shazzyazuwike)  
+- **Linktree:** [shalomazuwike](https://linktr.ee/shalomazuwike)  
+- **Email:** shazzyazuwike@gmail.com
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the `LICENSE` file for details.
+
+---
+
+**Built with ❤️ by Shalom Chidi-Azuwike** — inspired by innovation and a vision for a multiplanetary future.
